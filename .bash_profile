@@ -1,45 +1,5 @@
 #!/usr/bin/env bash
 
-# Load RVM, if you are using it
-
-# Add rvm gems and nginx to the path
-export PATH=$PATH:~/.gem/ruby/2.0.0/bin:/opt/nginx/sbin
-
-# Path to the bash it configuration
-export BASH_IT=$HOME/.bash_it
-
-# Lock and Load a custom theme file
-# location /.bash_it/themes/
-export BASH_IT_THEME='Powerline'
-
-# Your place for hosting Git repos. I use this for private repos.
-export GIT_HOSTING='git@git.gmszone.com'
-
-# Set my editor and git editor
-export EDITOR="/usr/bin/mate -w"
-export GIT_EDITOR='/usr/bin/mate -w'
-
-# Set the path nginx
-export NGINX_PATH='/opt/nginx'
-
-# Don't check mail when opening terminal.
-unset MAILCHECK
-
-# Change this to your console based IRC client of choice.
-
-export IRC_CLIENT='irssi'
-
-# Set this to the command you use for todo.txt-cli
-
-export TODO="t"
-
-# Set vcprompt executable path for scm advance info in prompt (demula theme)
-# https://github.com/xvzf/vcprompt
-#export VCPROMPT_EXECUTABLE=~/.vcprompt/bin/vcprompt
-
-# Load Bash It
-source $BASH_IT/bash_it.sh
-
 # Setting for the new UTF-8 terminal support in Lion
 export LC_CTYPE=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
@@ -62,9 +22,6 @@ parse_git_branch() {
 
 #   Set Paths
 #   ------------------------------------------------------------
-    export PATH="$PATH:/usr/local/bin/"
-    export PATH="/Users/fdhuang/android/sdk/platform-tools:/Users/fdhuang/android/sdk/tools:/usr/local/git/bin:/sw/bin/:/usr/local/bin:/usr/local/:/usr/local/sbin:/usr/local/mysql/bin:$PATH"
-	export ANDROID_HOME="/Users/fdhuang/android/sdk"
 #   Set Default Editor (change 'Nano' to the editor of your choice)
 #   ------------------------------------------------------------
     export EDITOR=/usr/bin/vim
@@ -315,11 +272,9 @@ alias mountReadWrite='/sbin/mount -uw /'    # mountReadWrite:   For use when boo
 
 #   cleanupLS:  Clean up LaunchServices to remove duplicates in the "Open With" menu
 #   -----------------------------------------------------------------------------------
-    alias cleanupLS="/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -r -domain local -domain system -domain user && killall Finder"
 
 #    screensaverDesktop: Run a screensaver on the Desktop
 #   -----------------------------------------------------------------------------------
-    alias screensaverDesktop='/System/Library/Frameworks/ScreenSaver.framework/Resources/ScreenSaverEngine.app/Contents/MacOS/ScreenSaverEngine -background'
 
 #   ---------------------------------------
 #   8.  WEB DEVELOPMENT
@@ -371,12 +326,8 @@ httpHeaders () { /usr/bin/curl -I -L $@ ; }             # httpHeaders:      Grab
 
 ####################################################################################
 function google() { open "http://www.google.com/search?q= $1"; }
-source ~/.git-completion.sh
 ####################################################################################
 
-export PATH="$(brew --prefix php54)/bin:$PATH"
-export PATH="$(brew --prefix coreutils)/libexec/gnubin:$PATH"
-export JAVA_HOME=`/usr/libexec/java_home -v 1.6`
 
 if [ "$TERM" != "dumb" ]; then
     export LS_OPTIONS='--color=auto'
@@ -398,48 +349,6 @@ cd ()
     builtin cd "$@";
     ll 
 }
-
-# bash-completion
-if [ -f $(brew --prefix)/etc/bash_completion ]; then
-    . $(brew --prefix)/etc/bash_completion
-fi
-
-##
-# Your previous /Users/fdhuang/.bash_profile file was backed up as /Users/fdhuang/.bash_profile.macports-saved_2014-01-04_at_17:24:13
-##
-
-# MacPorts Installer addition on 2014-01-04_at_17:24:13: adding an appropriate PATH variable for use with MacPorts.
-export PATH=/opt/local/bin:/opt/local/sbin:$PATH
-# Finished adapting your PATH environment variable for use with MacPorts.
-
-export PATH=/Users/fdhuang/.cabal/bin:/Users/fdhuang/Qt/5.2.1/clang_64/bin:/Users/fdhuang/android/android-ndk-r9c:$PATH
-export PYTHONPATH=/usr/local/lib/python2.7/site-packages:$PYTHONPATH
-
-# . ~/powerline/powerline/bindings/bash/powerline.sh
-function _update_ps1() {
-   export PS1="$(~/powerline-shell/powerline-shell.py $? 2> /dev/null)"
-}
-
 HISTSIZE=1000
 HISTFILESIZE=2000
-
-
-
-export PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
-alias nw="/Applications/node-webkit/node-webkit.app/Contents/MacOS/node-webkit"
-
-terminal-notifier -sound default -title '' -message "Happy Hacking!!"
-
-function growl() {
-  terminal-notifier -activate com.googlecode.iterm2 -title '' -subtitle "A message from your shell:" -message "$@"
-}
-function groooowl() {
-  terminal-notifier -activate com.googlecode.iterm2 -title '' -subtitle "A message from your shell:" -message "$@"
-  say "$@"
-}
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
-
-
-#THIS MUST BE AT THE END OF THE FILE FOR GVM TO WORK!!!
-[[ -s "/Users/fdhuang/.gvm/bin/gvm-init.sh" ]] && source "/Users/fdhuang/.gvm/bin/gvm-init.sh"
 
