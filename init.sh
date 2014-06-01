@@ -20,6 +20,17 @@ case $1 in
     echo -e "\033[Install RVM\033[0m"
     \curl -sSL https://get.rvm.io | bash -s stable
     ;;
+  chruby)
+    wget -O chruby-0.3.8.tar.gz https://github.com/postmodern/chruby/archive/v0.3.8.tar.gz
+    tar -xzvf chruby-0.3.8.tar.gz
+    cd chruby-0.3.8/
+    sudo make install
+    ;;
+   drush)
+    sed -i '1i export PATH="$HOME/.composer/vendor/bin:$PATH"' $HOME/.bashrc
+    source $HOME/.bashrc
+    composer global require drush/drush:dev-master
+    ;;
   *) 
     echo -e "\034[System Init Configure\033[0m"
     echo -e "\034[Usage:{basic|more}\033[0m"
