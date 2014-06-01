@@ -26,10 +26,15 @@ case $1 in
     cd chruby-0.3.8/
     sudo make install
     ;;
-   drush)
+  drush)
     sed -i '1i export PATH="$HOME/.composer/vendor/bin:$PATH"' $HOME/.bashrc
     source $HOME/.bashrc
     composer global require drush/drush:dev-master
+    ;;
+  py)
+    sudo pip install argcomplete
+    sudo pip install mezzanine
+    sudo pip install pyserial
     ;;
   *) 
     echo -e "\034[System Init Configure\033[0m"
