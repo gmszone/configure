@@ -51,7 +51,7 @@ case $1 in
     ;;
 
   ubuntu)
-    sudo apt-get install curl
+    sudo apt-get install curl git python-setuptools emacs vim ruby
     ;;
   *) 
     echo -e "\034[System Init Configure\033[0m"
